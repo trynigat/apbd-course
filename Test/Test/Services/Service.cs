@@ -6,16 +6,20 @@ namespace Test.Services;
 
 public class Service : IService
 {
-    private readonly string connectionString =
-        "Data Source=db-mssql;Initial Catalog=2019SBD;Integrated Security=True;Trust Server Certificate=True";
+    private readonly string _connectionString;
 
+
+    public Service(IConfiguration configuration)
+    {
+        _connectionString = configuration.GetConnectionString("Default")??string.Empty;
+    }
 
     public async Task<List<RobotDto>> GetRobots()
     {
         var robots =new  List<RobotDto>() ;
         string txtComannd = "SELECT * FROM Robot";
 
-        await using (SqlConnection connection = new SqlConnection(connectionString))
+        await using (SqlConnection connection = new SqlConnection(_connectionString))
         await using (SqlCommand command = new SqlCommand(txtComannd, connection))
         {
             await connection.OpenAsync();
@@ -31,7 +35,7 @@ public class Service : IService
                     name = reader.GetString(1)
                 });
             }
-        }
+        }//microsoft.data.sql.client
 
         return robots;
     }
@@ -40,7 +44,7 @@ public class Service : IService
     {
         var txtcmd = "INSERT INTO ROBOT (imie) VALUES (@imie)";
         
-        await using (SqlConnection connection = new SqlConnection(connectionString))
+        await using (SqlConnection connection = new SqlConnection(_connectionString))
         await using (SqlCommand command = new SqlCommand(txtcmd, connection))
         {
             await connection.OpenAsync();
@@ -55,7 +59,7 @@ public class Service : IService
     public async Task<bool> DeleteRobot(string name)
     {
        var txtcmd = "DELETE FROM Robot WHERE id=@id;";
-       await using (SqlConnection connection = new SqlConnection(connectionString))
+       await using (SqlConnection connection = new SqlConnection(_connectionString))
        await using (SqlCommand command = new SqlCommand(txtcmd, connection))
        {
            await connection.OpenAsync();
