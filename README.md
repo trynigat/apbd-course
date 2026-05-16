@@ -1,7 +1,6 @@
 # apbd
+A set of some tasks from the APBD (database applications) course at the PJATK University
 
-APBD3 - C#/.NET object-oriented programming (OOP) 
-
-APBD5 - LINQ queries and xUnit unit tests
-
-APBD8, Test - REST API (Web API)
+* **APBD3** - C#/.NET object-oriented programming (OOP) 
+* **APBD5** - LINQ queries and xUnit unit tests
+* **APBD8, Test** - REST API (Web API)
