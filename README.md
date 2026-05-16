@@ -1,5 +1,7 @@
 # apbd
 
-APBD3 - A C#/.NET object-oriented programming (OOP) assignment that teaches how to translate complex business requirements into clean code, validate data, handle exceptions, and implement core logistics system logic
+APBD3 - C#/.NET object-oriented programming (OOP) 
 
-APBD5 - A .NET testing assignment focused on writing LINQ queries and verifying data correctness using xUnit unit tests.
+APBD5 - LINQ queries and xUnit unit tests
+
+APBD8, Test - REST API (Web API)
